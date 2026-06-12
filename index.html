@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messager</title>
+    <style>
+    body{
+      margin:10px 10%;
+      text-align: center;
+      background-color: orange;
+    }
+    </style>
+</head>
+<body>
+    <h1>text me from web</h1>
+    <textarea id="txt" rows="4" placeholder="enter Your message"></textarea><br>
+    <p id="sd"></p>
+    <br><button onclick="sendT()">send</button>
+    <h1>to view response click below button</h1>
+    <button onclick="getMessages()">view</button><br><button onclick="latest()">latest</button><br><h3>every 20 seconds shows the latest msg</h3>
+    <p id="res"></p>
+    <script>
+        function sendT(){
+            const txt=document.getElementById("txt").value;
+            const token =
+        "8841208085:AAEjZPXO8cZ62MuH62B1t0dSN_HP7WZseWw";
+
+    const chatId =
+        "5535326319";
+
+    fetch(
+        `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${txt}`
+    );
+    alert("sent");
+}
+        async function getMessages(){
+
+    const token = "8841208085:AAEjZPXO8cZ62MuH62B1t0dSN_HP7WZseWw";
+
+    const res = await fetch(
+        `https://api.telegram.org/bot${token}/getUpdates`
+    );
+
+    const data = await res.json();
+    document.getElementById("res").innerHTML="";
+
+    data.result.forEach(update => {
+
+        const msg = update.message;
+
+        const time =
+            new Date(msg.date * 1000);
+
+        const from =
+            msg.from.first_name;
+
+        const text =
+            msg.text;
+
+        document.getElementById("res").innerHTML+="<br>Time:"+ time+"<br>From:"+ from +"<br>Message:"+ text+"<br>";
+
+    });
+}
+async function latest(){
+     const token = "8841208085:AAEjZPXO8cZ62MuH62B1t0dSN_HP7WZseWw";
+    const res = await fetch(
+        `https://api.telegram.org/bot${token}/getUpdates`
+    );
+    const data = await res.json();
+    const latest =
+    data.result[
+        data.result.length - 1
+    ];
+    const nm=latest.message.from.first_name;
+    const msg=latest.message;
+    const time =
+            new Date(msg.date * 1000);
+
+document.getElementById("res").innerHTML="";
+document.getElementById("res").innerHTML+="<br>Time:"+time+"<br>From:"+nm+"<br>Message:"+latest.message.text;
+}
+setInterval(latest,20000);
+</script>
+</body>
+
+</html>

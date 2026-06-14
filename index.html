@@ -30,13 +30,14 @@
     const chatId =
         ["5535326319","6860704242"];
             const nm = document.getElementById("nm").value;
+            nm=nm.toLowerCase().trim();
     if(nm === "dundayya"){
     fetch(
         `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId[1]}&text=${txt}`
     );
     alert("sent");
     }
-    if(nm === "vinay"){
+    else if(nm === "vinay"){
         fetch(
         `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId[0]}&text=${txt}`
     );
@@ -92,6 +93,17 @@ async function latest(){
 document.getElementById("res").innerHTML="";
 document.getElementById("res").innerHTML+="<br>Time:"+time+"<br>From:"+nm+"<br>Message:"+latest.message.text;
 }
+        function verify(){
+            let pass = 2525;
+            let inp = pasreInt(prompt("enter password"));
+            if(inp === pass){
+                alert("welcome");
+            }
+            else{
+                document.body.innerHTML = "access denied";
+            }
+        }
+        verify();
 setInterval(latest,20000);
 </script>
 </body>

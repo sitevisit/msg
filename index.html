@@ -15,6 +15,7 @@
 <body>
     <h1>text me from web</h1>
     <textarea id="txt" rows="4" placeholder="enter Your message"></textarea><br>
+    <input type="text" rows="2" id="nm" placeholder="enter name to send" required><br>
     <p id="sd"></p>
     <br><button onclick="sendT()">send</button>
     <h1>to view response click below button</h1>
@@ -27,12 +28,23 @@
         "8841208085:AAEjZPXO8cZ62MuH62B1t0dSN_HP7WZseWw";
 
     const chatId =
-        "5535326319";
-
+        ["5535326319","6860704242"];
+            const nm = document.getElementById("nm").value;
+    if(nm === "dundayya"){
     fetch(
-        `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${txt}`
+        `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId[1]}&text=${txt}`
     );
     alert("sent");
+    }
+    if(nm === "vinay"){
+        fetch(
+        `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId[0]}&text=${txt}`
+    );
+    alert("sent");
+    }
+            else{
+                alert("not sent");
+            }
 }
         async function getMessages(){
 

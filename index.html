@@ -12,7 +12,7 @@
     }
     </style>
 </head>
-<body>
+<body id="b">
     <h1>text me from web</h1>
     <textarea id="txt" rows="4" placeholder="enter Your message"></textarea><br>
     <input type="text" rows="2" id="nm" placeholder="enter name to send" required><br>
@@ -95,12 +95,13 @@ document.getElementById("res").innerHTML+="<br>Time:"+time+"<br>From:"+nm+"<br>M
 }
         function verify(){
             let pass = 2525;
-            let inp = pasreInt(prompt("enter password"));
+            let inp = prompt("enter password");
+            inp = parseInt(inp);
             if(inp === pass){
                 alert("welcome");
             }
             else{
-                document.body.innerHTML = "access denied";
+                document.getElementById("b").innerHTML = "access denied";
             }
         }
         verify();

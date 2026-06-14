@@ -22,7 +22,7 @@
     <button onclick="getMessages()">view</button><br><button onclick="latest()">latest</button><br><h3>every 20 seconds shows the latest msg</h3>
     <p id="res"></p>
     <script>
-        function sendT(){
+       async function sendT(){
             const txt=document.getElementById("txt").value;
             const token =
         "8841208085:AAEjZPXO8cZ62MuH62B1t0dSN_HP7WZseWw";
@@ -32,13 +32,13 @@
             const nm = document.getElementById("nm").value;
             nm=nm.toLowerCase().trim();
     if(nm === "dundayya"){
-    fetch(
+    await fetch(
         `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId[1]}&text=${txt}`
     );
     alert("sent");
     }
     else if(nm === "vinay"){
-        fetch(
+    await fetch(
         `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId[0]}&text=${txt}`
     );
     alert("sent");

@@ -85,6 +85,11 @@ async function latest(){
     data.result[
         data.result.length - 1
     ];
+    if(data.result.length === 0){
+    document.getElementById("res").innerHTML =
+    "No messages found";
+    return;
+}
     const nm=latest.message.from.first_name;
     const msg=latest.message;
     const time =

@@ -13,7 +13,7 @@
     </style>
 </head>
 <body id="b">
-	<div id='sep'>
+	<div id='body'>
     <h1>text me from web</h1>
     <textarea id="txt" rows="4" placeholder="enter Your message"></textarea><br>
     <input type="text" rows="2" id="nm" placeholder="enter name to send" required><br>
@@ -139,7 +139,6 @@ async function verify(){
 
     if(userOTP == window.generatedOTP){
         alert("Welcome Admin");
-	      loadData();
 	      break;
     }else{
         alert("Wrong OTP");

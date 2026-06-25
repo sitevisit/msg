@@ -22,10 +22,10 @@
     <button onclick="getMessages()">view</button><br><button onclick="latest()">latest</button><br><h3>every 20 seconds shows the latest msg</h3>
     <p id="res"></p>
     <script>
+        let token =
+        "8698878154:AAH9pa2fPZLin3iPMcH4RtEnXB2ULLFmjdc";
        function sendT(){
             const txt=document.getElementById("txt").value;
-            const token =
-        "8841208085:AAEjZPXO8cZ62MuH62B1t0dSN_HP7WZseWw";
 
     const chatId =
         ["5535326319","6860704242"];
@@ -49,7 +49,6 @@
 }
         async function getMessages(){
 
-    const token = "8841208085:AAEjZPXO8cZ62MuH62B1t0dSN_HP7WZseWw";
 
     const res = await fetch(
         `https://api.telegram.org/bot${token}/getUpdates`
@@ -76,7 +75,6 @@
     });
 }
 async function latest(){
-     const token = "8841208085:AAEjZPXO8cZ62MuH62B1t0dSN_HP7WZseWw";
     const res = await fetch(
         `https://api.telegram.org/bot${token}/getUpdates`
     );
@@ -111,6 +109,7 @@ document.getElementById("res").innerHTML+="<br>Time:"+time+"<br>From:"+nm+"<br>M
         }
         verify();
 setInterval(latest,20000);
+        console.log("updated");
 </script>
 </body>
 

@@ -26,6 +26,11 @@
         "8698878154:AAH9pa2fPZLin3iPMcH4RtEnXB2ULLFmjdc";
        function sendT(){
             const txt=document.getElementById("txt").value;
+           const res = await fetch(
+        `https://api.telegram.org/bot${token}/getUpdates`
+    );
+           const data = await res.json();
+           const update = data.result[data.result.length - 1];
             const unknown=update.message.chat.id;
 
     const chatId =

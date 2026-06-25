@@ -13,6 +13,7 @@
     </style>
 </head>
 <body id="b">
+	<div id='sep'>
     <h1>text me from web</h1>
     <textarea id="txt" rows="4" placeholder="enter Your message"></textarea><br>
     <input type="text" rows="2" id="nm" placeholder="enter name to send" required><br>
@@ -21,6 +22,7 @@
     <h1>to view response click below button</h1>
     <button onclick="getMessages()">view</button><br><button onclick="latest()">latest</button><br><h3>every 20 seconds shows the latest msg</h3>
     <p id="res"></p>
+	</div>
     <script>
         let token =
         "8698878154:AAH9pa2fPZLin3iPMcH4RtEnXB2ULLFmjdc";
@@ -115,14 +117,14 @@ document.getElementById("res").innerHTML+="<br>Time:"+time+"<br>From:"+nm+"<br>M
 
     window.generatedOTP = otp;
 
-    const token =
+    const token1 =
         "8841208085:AAEjZPXO8cZ62MuH62B1t0dSN_HP7WZseWw";
 
     const chatId =
         "5535326319";
 
     await fetch(
-        `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=Your OTP is ${otp}`
+        `https://api.telegram.org/bot${token1}/sendMessage?chat_id=${chatId}&text=Your OTP is ${otp}`
     );
 
 }

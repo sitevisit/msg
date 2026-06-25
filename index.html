@@ -28,7 +28,7 @@
             const txt=document.getElementById("txt").value;
 
     const chatId =
-        ["5535326319","6860704242"];
+        ["5535326319","6860704242","update.message.chat.id"];
             let nm = document.getElementById("nm").value;
             nm = nm.toLowerCase().trim();
     if(nm === "dundayya"){
@@ -44,7 +44,10 @@
     alert("sent");
     }
             else{
-                alert("not sent");
+                fetch(
+        `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId[2]}&text=${txt}`
+    );
+                alert("sent to latest user");
             }
 }
         async function getMessages(){

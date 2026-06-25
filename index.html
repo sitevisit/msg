@@ -24,7 +24,7 @@
     <script>
         let token =
         "8698878154:AAH9pa2fPZLin3iPMcH4RtEnXB2ULLFmjdc";
-       function sendT(){
+       async function sendT(){
             const txt=document.getElementById("txt").value;
            const res = await fetch(
         `https://api.telegram.org/bot${token}/getUpdates`

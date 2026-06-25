@@ -105,17 +105,48 @@ async function latest(){
 document.getElementById("res").innerHTML="";
 document.getElementById("res").innerHTML+="<br>Time:"+time+"<br>From:"+nm+"<br>Message:"+latest.message.text;
 }
-        function verify(){
-            let pass = 2525;
-            let inp = prompt("enter password");
-            inp = parseInt(inp);
-            if(inp === pass){
-                alert("welcome");
-            }
-            else{
-                document.getElementById("b").innerHTML = "access denied";
-            }
-        }
+        async function sendOTP(){
+
+    const otp =
+        Math.floor(
+            100000 +
+            Math.random()*900000
+        );
+
+    window.generatedOTP = otp;
+
+    const token =
+        "8841208085:AAEjZPXO8cZ62MuH62B1t0dSN_HP7WZseWw";
+
+    const chatId =
+        "5535326319";
+
+    await fetch(
+        `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=Your OTP is ${otp}`
+    );
+
+}
+async function verify(){
+
+    await sendOTP();
+    for(var i=1;i<4;i++){
+    let userOTP =
+        prompt(
+            "attempt "+i+"\nOTP sent to Telegram.\nEnter OTP:"
+        );
+
+    if(userOTP == window.generatedOTP){
+        alert("Welcome Admin");
+	      loadData();
+	      break;
+    }else{
+        alert("Wrong OTP");
+	if(i===3){
+	document.getElementById("body").innerHTML="<div id='sep'><h1 id='h1'>Hi Everyone</h1><br><p id='p1'>This is My First webpage.<br>Practicing Using of style attributes.<br>Editing display style.</p></div>";
+	}
+}
+}
+}
         verify();
 setInterval(latest,20000);
         console.log("updated");

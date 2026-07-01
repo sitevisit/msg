@@ -17,6 +17,7 @@
     <h1>text me from web</h1>
     <textarea id="txt" rows="4" placeholder="enter Your message"></textarea><br>
     <input type="text" rows="2" id="nm" placeholder="enter name to send" required><br>
+	<input type="number" id="cid" placeholder="for ChatId (optional)"><br>
     <p id="sd"></p>
     <br><button onclick="sendT()">send</button>
     <h1>to view response click below button</h1>
@@ -34,6 +35,7 @@
            const data = await res.json();
            const update = data.result[data.result.length - 1];
             const unknown=update.message.chat.id;
+		   let cid = document.getElementById("cid").value;
 
     const chatId =
         ["5535326319","6860704242",unknown];
@@ -51,10 +53,13 @@
     );
     alert("sent");
 	}
-            else{
-                fetch(
-        `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId[2]}&text=${txt}`
-    );
+	else if(nm === ""){
+        fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_if=${cid}&text=${txt}`	
+	    alert("sent by chatid");
+	}
+    else{
+        fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId[2]}&text=${txt}`
+        );
                 alert("sent to latest user");
             }
 }
